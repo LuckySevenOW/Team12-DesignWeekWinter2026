@@ -6,9 +6,10 @@ public class CannonBulletSpawn : MonoBehaviour
 {
     public int Damage;
     public int ShotVelocity;
-    public int RemainingShots = 1;
+    public int RemainingShots = 0;
     public Rigidbody2D BulletSpawn;
     public GameObject Bullet;
+    public SpriteRenderer AmmoIndicator;
     public void Shoot()
     {
         //check for ammo
@@ -22,13 +23,26 @@ public class CannonBulletSpawn : MonoBehaviour
             //reduce ammo
         RemainingShots -= 1;
         }
+
+    }
+    private void Update()
+    {
+        //ammo indicator code
+        if (RemainingShots > 0)
+        {
+            AmmoIndicator.enabled = false;
+        }
+        else
+        {
+            AmmoIndicator.enabled = true;
+        }
     }
     public void AddAmmo(int AddAmmo)
     {
         RemainingShots += AddAmmo;
         if (RemainingShots > 1)
         {
-            RemainingShots = 0;
+            RemainingShots = 1;
         }
 
     }

@@ -139,6 +139,15 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        //pick up ammo on touching box
+        if (Rigidbody2D.IsTouchingLayers(AmmoBoxLayers))
+        {
+            if (InputActionInteract.WasPressedThisFrame())
+            {
+                HoldingAmmo = true;
+            }
+
+        }
 
 
     }
@@ -179,6 +188,17 @@ public class PlayerController : MonoBehaviour
             float moveForce = moveValue.x * MoveSpeed;
             // Apply fraction of force each frame
             Rigidbody2D.linearVelocityX = moveForce;
+            // turn towards direction
+            if (moveForce > 0)
+            {
+                SpriteRenderer.flipX = true;
+
+            }
+            else
+            if (moveForce < 0)
+            {
+                SpriteRenderer.flipX = false;
+            }
         }
         // change inputs to move cannon
         else
@@ -251,11 +271,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        //pick up ammo on touching box
-        if (Rigidbody2D.IsTouchingLayers(AmmoBoxLayers))
-        {
-            HoldingAmmo = true;
-        }
+
     }
 
     // OnValidate runs after any change in the inspector for this script.
