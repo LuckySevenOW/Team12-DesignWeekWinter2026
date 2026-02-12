@@ -21,7 +21,11 @@ public class BulletDamage : MonoBehaviour
             CurrCollider = collision.rigidbody;
             CurrCollider.transform.GetComponent<Destructable>().Hit(BulDam);
         }
-        Destroy(itself, 0.01f);
+        else if (collision.gameObject.CompareTag("player"))
+        {
+            collision.transform.GetComponent<Rigidbody2D>().linearVelocity = itself.transform.position - collision.transform.position;
+        }
+            Destroy(itself, 0.01f);
     }
     // Update is called once per frame
     void Update()
