@@ -19,7 +19,18 @@ public class BulletDamage : MonoBehaviour
         if (Rigidbody2D.IsTouchingLayers(destroyablelayers))
         {
             CurrCollider = collision.rigidbody;
-            CurrCollider.transform.GetComponent<Destructable>().Hit(BulDam);
+            if (CurrCollider)
+          {
+            if (CurrCollider.transform.GetComponent<Destructable>())
+                CurrCollider.transform.GetComponent<Destructable>().Hit(BulDam);
+            else
+            {
+                if (CurrCollider.transform.GetComponent<WinTarget>())
+                {
+                    CurrCollider.transform.GetComponent<WinTarget>().Hit(BulDam);
+                }
+            }
+          }
         }
         else if (collision.gameObject.CompareTag("player"))
         {

@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
 
     private bool Climbing = false;
 
-    private bool HoldingAmmo = false;
+    public bool HoldingAmmo = false;
+
+    public bool OnAmmo = false;
+
+    public bool TouchingCannon = false;
 
     LayerMask GroundLayers;
 
@@ -101,7 +105,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (InputActionAttack.WasPressedThisFrame())
                 {
-                   CurrCannon.transform.GetChild(0).GetComponent<CannonBulletSpawn>().Shoot();
+                   CurrCannon.transform.GetComponentInParent<CannonBulletSpawn>().Shoot();
                 }
             }
         }
@@ -113,34 +117,28 @@ public class PlayerController : MonoBehaviour
             DoJump = true;
         }
         //check for cannon interaction
-        if (Rigidbody2D.IsTouchingLayers(CannonLayers))
+        if (TouchingCannon)
         {
             if (HoldingAmmo)
             {
-                currentcollider.transform.GetChild(0).GetComponent<CannonBulletSpawn>().AddAmmo(1);
+                CurrCannon.transform.GetComponentInParent<CannonBulletSpawn>().AddAmmo(1);
                 HoldingAmmo = false;
             }
-
-            if (CurrCannon == null)
-           {
             if (InputActionInteract.WasPressedThisFrame())
             {
-                  CurrCannon = currentcollider;
-                  CanMove = false;
-            }
-           }
-            else
-            {
-                if (InputActionInteract.WasPressedThisFrame())
+                if (CanMove)
                 {
-                    CurrCannon = null;
+                  CanMove = false;
+                }
+                else
+                {
                     CanMove = true;
                 }
             }
 
         }
         //pick up ammo on touching box
-        if (Rigidbody2D.IsTouchingLayers(AmmoBoxLayers))
+        if (OnAmmo)
         {
             if (InputActionInteract.WasPressedThisFrame())
             {
@@ -206,7 +204,7 @@ public class PlayerController : MonoBehaviour
             if (CurrCannon != null)
             {
                 Rigidbody2D.linearVelocityX = 0;
-                Rigidbody2D cannonget = CurrCannon.transform.GetChild(0).GetComponent<Rigidbody2D>();
+                Rigidbody2D cannonget = CurrCannon;
                 //leftturrets
                 if (cannonget.transform.position.x > 0)
                 {
