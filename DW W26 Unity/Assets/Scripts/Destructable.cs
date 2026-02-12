@@ -14,7 +14,6 @@ public class Destructable : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.red;
         Invoke("ResetColor", 0.1f);
         health -= damage;
-        print(health);
         if (health <= 0)
         {
             Destroy(thisstructrure, 0.01f);

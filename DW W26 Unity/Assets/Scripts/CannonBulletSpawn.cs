@@ -10,6 +10,8 @@ public class CannonBulletSpawn : MonoBehaviour
     public Rigidbody2D BulletSpawn;
     public GameObject Bullet;
     public SpriteRenderer AmmoIndicator;
+    public bool Missile;
+    private float AutoReload = 20f;
     public void Shoot()
     {
         //check for ammo
@@ -24,6 +26,7 @@ public class CannonBulletSpawn : MonoBehaviour
         RemainingShots -= 1;
         }
 
+
     }
     private void Update()
     {
@@ -36,13 +39,28 @@ public class CannonBulletSpawn : MonoBehaviour
         {
             AmmoIndicator.enabled = true;
         }
+        if (Missile)
+        {
+            AutoReload -= Time.deltaTime;
+            if (AutoReload <= 0)
+            {
+                RemainingShots = 1;
+                AutoReload = 20;
+            }
+        }
     }
     public void AddAmmo(int AddAmmo)
     {
-        RemainingShots += AddAmmo;
-        if (RemainingShots > 1)
+        if (Missile)
         {
-            RemainingShots = 1;
+        }
+        else
+        {
+             RemainingShots += AddAmmo;
+          if (RemainingShots > 1)
+           {
+                RemainingShots = 1;
+           }
         }
 
     }

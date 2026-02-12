@@ -166,4 +166,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itself: {fileID: 9095433921094696584}
+  Sprite: {fileID: 5414720453854008066}
+  Explosion: {fileID: 0}
+  Explodes: 0
+  BulDam: 25
+  ExplosiveDam: 1
+  BulletKnockback: 10
+  ExplosiveKnockback: 1
   <Rigidbody2D>k__BackingField: {fileID: 2637901363206400066}

@@ -215,7 +215,6 @@ public class PlayerController : MonoBehaviour
         {
             if (CurrCannon != null)
             {
-                Rigidbody2D.linearVelocityX = 0;
                 Rigidbody2D cannonget = CurrCannon;
                 //leftturrets
                 if (cannonget.transform.position.x > 0)
@@ -249,16 +248,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            //check if player is on floor
-            if (Rigidbody2D.IsTouchingLayers(GroundLayers))
-            {
-                //if not moving stop all velocity
-                if (moveValue == new Vector2(0, 0))
-                {
-                    Rigidbody2D.linearVelocityX = 0;
-                }
-
-            }
 
         }
         // JUMP - review Update()
@@ -282,6 +271,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+    public void MoveEnable()
+    {
+        CanMove = true;
     }
 
     // OnValidate runs after any change in the inspector for this script.

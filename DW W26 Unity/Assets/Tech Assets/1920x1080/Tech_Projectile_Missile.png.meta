@@ -1,10 +1,14 @@
 fileFormatVersion: 2
-guid: 5d6239b396ad0444db1239c7eb1cce95
+<<<<<<< Updated upstream
+guid: ec19460504e0e424aaa9fa2498d598bb
+=======
+guid: 668a8c51111bd944382e5150591e4f62
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6862702579967729182
-    second: Tech_Objects_BubbleShield_Shield_1080_0
+      213: -2044783179239087613
+    second: Tech_Projectile_Missile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tech_Objects_BubbleShield_Shield_1080_0
+      name: Tech_Projectile_Missile_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 35
-        width: 384
-        height: 349
+        x: 11
+        y: 5
+        width: 128
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2e1edd91d58c2c0a0800000000000000
-      internalID: -6862702579967729182
+      spriteID: 302a2ce38887f93e0800000000000000
+      internalID: -2044783179239087613
       vertices: []
       indices: 
       edges: []
@@ -135,7 +139,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tech_Objects_BubbleShield_Shield_1080_0: -6862702579967729182
+      Tech_Projectile_Missile_0: -2044783179239087613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

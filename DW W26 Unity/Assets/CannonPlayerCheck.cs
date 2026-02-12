@@ -17,6 +17,7 @@ public class CannonPlayerCheck : MonoBehaviour
         {
             collider.transform.GetComponent<PlayerController>().TouchingCannon = false;
             collider.transform.GetComponent<PlayerController>().CurrCannon = null;
+            collider.transform.GetComponent<PlayerController>().CanMove = true;
         }
     }
 }
