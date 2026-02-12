@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 
     public bool CanMove = true;
 
+    public float ClimbSpeed = 5f;
+
+    private bool Climbing = false;
+
     private bool HoldingAmmo = false;
 
     LayerMask GroundLayers;
@@ -63,6 +67,11 @@ public class PlayerController : MonoBehaviour
     }
 
     // Set up player input
+    public void OnLadder(bool check)
+    {
+        Climbing = check;
+    }
+
     public void AssignPlayerInputDevice(PlayerInput playerInput)
     {
         // Record our player input (ie controller).
@@ -162,6 +171,12 @@ public class PlayerController : MonoBehaviour
             float moveForce = moveValue.x * MoveSpeed;
             // Apply fraction of force each frame
             Rigidbody2D.linearVelocityX = moveForce;
+            if (Climbing)
+            {
+                float climbForce = moveValue.y * ClimbSpeed;
+                // Apply fraction of force each frame
+                Rigidbody2D.linearVelocityY = moveForce;
+            }
         }
         // change inputs to move cannon
         else
