@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D CurrCannon;
 
+    public Sprite Wizard;
+
+    public Sprite TechGuy;
+
     private float rotationrangeright;
 
     private float rotationrangeleft;
@@ -48,6 +52,14 @@ public class PlayerController : MonoBehaviour
         GroundLayers = LayerMask.GetMask("ground", "cannon");
         CannonLayers = LayerMask.GetMask("cannon");
         AmmoBoxLayers = LayerMask.GetMask("ammobox");
+        if (Rigidbody2D.transform.position.x > 0)
+        {
+            SpriteRenderer.sprite = Wizard;
+        }
+        else
+        {
+            SpriteRenderer.sprite = TechGuy;
+        }
     }
 
     // Player input information
