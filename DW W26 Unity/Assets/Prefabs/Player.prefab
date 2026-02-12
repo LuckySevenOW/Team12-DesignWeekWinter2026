@@ -220,7 +220,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 8
   <JumpForce>k__BackingField: 18
   CanMove: 1
-  ClimbSpeed: 5
+  ClimbSpeed: 8
   CannonRotateSpeed: 100
   CurrCannon: {fileID: 0}
 --- !u!50 &3752404572598628836

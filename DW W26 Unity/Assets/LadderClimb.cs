@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class LadderClimb : MonoBehaviour
 {
+    public Rigidbody2D Collision;
     // trigger when object enters
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.transform.CompareTag("player"))
+        if (collider.gameObject.CompareTag("player"))
         {
             collider.transform.GetComponent<PlayerController>().OnLadder(true);
         }
     }
-    private void OnTriggerExit(Collider collider)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.transform.CompareTag("player"))
+        if (collider.gameObject.CompareTag("player"))
         {
             collider.transform.GetComponent<PlayerController>().OnLadder(false);
         }

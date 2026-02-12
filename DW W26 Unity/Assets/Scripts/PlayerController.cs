@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     // Set up player input
     public void OnLadder(bool check)
     {
+        print(check);
         Climbing = check;
     }
 
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // i forget what this does I forgot to add a comment
         if (collision.gameObject.layer == 3)
         {
             currentcollider = collision.rigidbody;
@@ -167,16 +169,16 @@ public class PlayerController : MonoBehaviour
 
         if (CanMove == true)
         {
+            if (Climbing)
+            {
+                float climbForce = moveValue.y * ClimbSpeed;
+                // add force up or down to climb
+                Rigidbody2D.linearVelocityY = climbForce;
+            }
             // Here we're only using the X axis to move.
             float moveForce = moveValue.x * MoveSpeed;
             // Apply fraction of force each frame
             Rigidbody2D.linearVelocityX = moveForce;
-            if (Climbing)
-            {
-                float climbForce = moveValue.y * ClimbSpeed;
-                // Apply fraction of force each frame
-                Rigidbody2D.linearVelocityY = moveForce;
-            }
         }
         // change inputs to move cannon
         else
@@ -242,6 +244,10 @@ public class PlayerController : MonoBehaviour
                     DoJump = false;
                 }
 
+            }
+            else
+            {
+                DoJump = false;
             }
 
         }
