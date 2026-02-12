@@ -5,6 +5,7 @@ public class BulletDamage : MonoBehaviour
     Rigidbody2D CurrCollider;
     LayerMask destroyablelayers;
     public GameObject itself;
+    public SpriteRenderer Sprite;
     public Rigidbody2D Explosion;
     public bool Explodes;
     public int BulDam;
@@ -49,5 +50,9 @@ public class BulletDamage : MonoBehaviour
             Explosion.transform.position = itself.transform.position;
         }
         Destroy(itself, 0.02f);
+    }
+    private void Update()
+    {
+        Sprite.transform.Rotate(new Vector3(0,0,5));
     }
 }
