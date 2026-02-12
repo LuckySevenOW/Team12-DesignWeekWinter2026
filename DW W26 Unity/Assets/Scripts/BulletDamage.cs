@@ -5,8 +5,8 @@ public class BulletDamage : MonoBehaviour
     Rigidbody2D CurrCollider;
     LayerMask destroyablelayers;
     public GameObject itself;
+    public Rigidbody2D Explosion;
     public bool Explodes;
-    public Rigidbody2D[] ExplosionTargets;
     public int BulDam;
     public int ExplosiveDam;
 
@@ -46,19 +46,8 @@ public class BulletDamage : MonoBehaviour
         }
         if (Explodes)
         {
-            foreach (Rigidbody2D Target in ExplosionTargets)
-            {
-                if (Target.transform.GetComponent<Destructable>())
-                {
-                    Target.transform.GetComponent<Destructable>().Hit(ExplosiveDam);
-                }
-                else if (collision.gameObject.CompareTag("player"))
-                {
-                    collision.transform.GetComponent<Rigidbody2D>().linearVelocity = (itself.transform.position - collision.transform.position) * ExplosiveKnockback;
-                }
-
-            }
+            Explosion.transform.position = itself.transform.position;
         }
-        Destroy(itself, 0.01f);
+        Destroy(itself, 0.02f);
     }
 }

@@ -521,11 +521,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 35
-  ShotVelocity: 20
+  ShotVelocity: 18
   RemainingShots: 1
   BulletSpawn: {fileID: 2551549276942485847}
   Bullet: {fileID: 9095433921094696584, guid: 99fbab15cdaca9f46bacf45cc5a2b46c, type: 3}
   AmmoIndicator: {fileID: 7705264310062099963}
+  Missile: 0
 --- !u!1 &8128079937775423345
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,13 +552,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8128079937775423345}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.4161884, w: 0.90927845}
-  m_LocalPosition: {x: 0.13971287, y: -0.736346, z: 0}
-  m_LocalScale: {x: 0.49999994, y: 0.49999994, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9396927, w: 0.34202018}
+  m_LocalPosition: {x: 0.101, y: -0.774, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4554079598566152839}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 140}
 --- !u!212 &7705264310062099963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -602,7 +603,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -4152104837303089374, guid: c048272310f7ea24ebffbdff9599d278, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
