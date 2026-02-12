@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ground
   - Cannon
+  - player
   layers:
   - Default
   - TransparentFX

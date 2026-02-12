@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7231421013244634836}
   - component: {fileID: 3485221335534835436}
   - component: {fileID: 7607825051533683763}
+  - component: {fileID: 4729422020764351733}
   m_Layer: 9
   m_Name: AmmoBox
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6463652392954002186, guid: 80eeabe3e35aa284582b72402cc2fc1c, type: 3}
+  m_Sprite: {fileID: -735585614017963186, guid: c388b085267038e4ab50e0d9fff0706a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,21 +120,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.35}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.6}
+    oldSize: {x: 0.86, y: 0.67}
     newSize: {x: 0.8, y: 0.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.1}
+  m_Size: {x: 1.2, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &7607825051533683763
 Rigidbody2D:
@@ -162,3 +163,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4729422020764351733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576070774540023822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd51a1247c37b14282e83694a768b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,7 +16,15 @@ public class PlayerController : MonoBehaviour
 
     public bool CanMove = true;
 
-    private bool HoldingAmmo = false;
+    public float ClimbSpeed = 5f;
+
+    private bool Climbing = false;
+
+    public bool HoldingAmmo = false;
+
+    public bool OnAmmo = false;
+
+    public bool TouchingCannon = false;
 
     LayerMask GroundLayers;
 
@@ -30,6 +38,10 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D CurrCannon;
 
+    public Sprite Wizard;
+
+    public Sprite TechGuy;
+
     private float rotationrangeright;
 
     private float rotationrangeleft;
@@ -40,6 +52,14 @@ public class PlayerController : MonoBehaviour
         GroundLayers = LayerMask.GetMask("ground", "cannon");
         CannonLayers = LayerMask.GetMask("cannon");
         AmmoBoxLayers = LayerMask.GetMask("ammobox");
+        if (Rigidbody2D.transform.position.x > 0)
+        {
+            SpriteRenderer.sprite = Wizard;
+        }
+        else
+        {
+            SpriteRenderer.sprite = TechGuy;
+        }
     }
 
     // Player input information
@@ -63,6 +83,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Set up player input
+    public void OnLadder(bool check)
+    {
+        print(check);
+        Climbing = check;
+    }
+
     public void AssignPlayerInputDevice(PlayerInput playerInput)
     {
         // Record our player input (ie controller).
@@ -91,7 +117,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (InputActionAttack.WasPressedThisFrame())
                 {
-                   CurrCannon.transform.GetChild(0).GetComponent<CannonBulletSpawn>().Shoot();
+                   CurrCannon.transform.GetComponentInParent<CannonBulletSpawn>().Shoot();
                 }
             }
         }
@@ -103,29 +129,32 @@ public class PlayerController : MonoBehaviour
             DoJump = true;
         }
         //check for cannon interaction
-        if (Rigidbody2D.IsTouchingLayers(CannonLayers))
+        if (TouchingCannon)
         {
             if (HoldingAmmo)
             {
-                currentcollider.transform.GetChild(0).GetComponent<CannonBulletSpawn>().AddAmmo(1);
+                CurrCannon.transform.GetComponentInParent<CannonBulletSpawn>().AddAmmo(1);
                 HoldingAmmo = false;
             }
-
-            if (CurrCannon == null)
-           {
             if (InputActionInteract.WasPressedThisFrame())
             {
-                  CurrCannon = currentcollider;
-                  CanMove = false;
-            }
-           }
-            else
-            {
-                if (InputActionInteract.WasPressedThisFrame())
+                if (CanMove)
                 {
-                    CurrCannon = null;
+                  CanMove = false;
+                }
+                else
+                {
                     CanMove = true;
                 }
+            }
+
+        }
+        //pick up ammo on touching box
+        if (OnAmmo)
+        {
+            if (InputActionInteract.WasPressedThisFrame())
+            {
+                HoldingAmmo = true;
             }
 
         }
@@ -134,6 +163,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // i forget what this does I forgot to add a comment
         if (collision.gameObject.layer == 3)
         {
             currentcollider = collision.rigidbody;
@@ -158,10 +188,27 @@ public class PlayerController : MonoBehaviour
 
         if (CanMove == true)
         {
+            if (Climbing)
+            {
+                float climbForce = moveValue.y * ClimbSpeed;
+                // add force up or down to climb
+                Rigidbody2D.linearVelocityY = climbForce;
+            }
             // Here we're only using the X axis to move.
             float moveForce = moveValue.x * MoveSpeed;
             // Apply fraction of force each frame
             Rigidbody2D.linearVelocityX = moveForce;
+            // turn towards direction
+            if (moveForce > 0)
+            {
+                SpriteRenderer.flipX = true;
+
+            }
+            else
+            if (moveForce < 0)
+            {
+                SpriteRenderer.flipX = false;
+            }
         }
         // change inputs to move cannon
         else
@@ -169,7 +216,7 @@ public class PlayerController : MonoBehaviour
             if (CurrCannon != null)
             {
                 Rigidbody2D.linearVelocityX = 0;
-                Rigidbody2D cannonget = CurrCannon.transform.GetChild(0).GetComponent<Rigidbody2D>();
+                Rigidbody2D cannonget = CurrCannon;
                 //leftturrets
                 if (cannonget.transform.position.x > 0)
                 {
@@ -228,13 +275,13 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
+            else
+            {
+                DoJump = false;
+            }
 
         }
-        //pick up ammo on touching box
-        if (Rigidbody2D.IsTouchingLayers(AmmoBoxLayers))
-        {
-            HoldingAmmo = true;
-        }
+
     }
 
     // OnValidate runs after any change in the inspector for this script.
