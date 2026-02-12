@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itself: {fileID: 9095433921094696584}
+  Sprite: {fileID: 5414720453854008066}
   Explosion: {fileID: 0}
   Explodes: 0
   BulDam: 25
