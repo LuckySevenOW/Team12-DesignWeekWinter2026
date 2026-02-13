@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2076964535339767577}
   - component: {fileID: 6886765975760604348}
   m_Layer: 10
-  m_Name: Missile
+  m_Name: Fireballl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 739698436, guid: ec19460504e0e424aaa9fa2498d598bb, type: 3}
+  m_Sprite: {fileID: -6826602922413761910, guid: c9430fc72ad993f48b1bf2d26eacda3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
