@@ -16,15 +16,12 @@ public class ExplosionRangeChecker : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        print("hit");
         if (collider.transform.CompareTag("ground"))
         {
-            print("hitwall");
             collider.transform.GetComponent<Destructable>().Hit(Damage);
         }
         else if (collider.gameObject.CompareTag("player"))
         {
-            print("hitplayerl");
             collider.transform.GetComponent<Rigidbody2D>().linearVelocity = (collider.transform.position - itself.transform.position) * Knockback;
         }
     }
