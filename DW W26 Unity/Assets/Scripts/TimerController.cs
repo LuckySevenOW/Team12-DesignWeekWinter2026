@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
@@ -15,8 +16,6 @@ public class TimerController : MonoBehaviour
     //This is for the panel gameobjects that will be the draw screens
     public GameObject DrawScreenDisplay1;
     public GameObject DrawScreenDisplay2;
-
-    private bool hasDrawed = false;
 
     void Update()
     {
@@ -35,15 +34,9 @@ public class TimerController : MonoBehaviour
         Countdown2.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
 
         //Activate the draw screens on both displays
-        if (time <= 0f && !hasDrawed)
+        if (time <= 0f)
         {
-            hasDrawed = true;
-
-            if (DrawScreenDisplay1 != null)
-                DrawScreenDisplay1.SetActive(true);
-
-            if (DrawScreenDisplay2 != null)
-                DrawScreenDisplay2.SetActive(true);
+            SceneManager.LoadScene(2);
         }
     }
 }

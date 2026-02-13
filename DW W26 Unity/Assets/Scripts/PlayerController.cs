@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public bool TouchingCannon = false;
 
+    public SpriteRenderer AmmoSprite;
+
     LayerMask GroundLayers;
 
     LayerMask CannonLayers;
@@ -45,15 +47,19 @@ public class PlayerController : MonoBehaviour
 
     private float rotationrangeleft;
 
+    public Sprite MagicAmmo;
+
 
     private void Start()
     {
+        AmmoSprite.enabled = false;
         GroundLayers = LayerMask.GetMask("ground", "cannon");
         CannonLayers = LayerMask.GetMask("cannon");
         AmmoBoxLayers = LayerMask.GetMask("ammobox");
         if (Rigidbody2D.transform.position.x > 0)
         {
             SpriteRenderer.sprite = Wizard;
+            AmmoSprite.sprite = MagicAmmo;
         }
         else
         {
@@ -132,8 +138,12 @@ public class PlayerController : MonoBehaviour
         {
             if (HoldingAmmo)
             {
+                if (CurrCannon.transform.GetComponentInParent<CannonBulletSpawn>().Missile == false)
+                {
                 CurrCannon.transform.GetComponentInParent<CannonBulletSpawn>().AddAmmo(1);
                 HoldingAmmo = false;
+                AmmoSprite.enabled = false;
+                }
             }
             if (InputActionInteract.WasPressedThisFrame())
             {
@@ -154,6 +164,7 @@ public class PlayerController : MonoBehaviour
             if (InputActionInteract.WasPressedThisFrame())
             {
                 HoldingAmmo = true;
+                AmmoSprite.enabled = true;
             }
 
         }

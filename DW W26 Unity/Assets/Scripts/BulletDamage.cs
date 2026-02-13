@@ -53,6 +53,6 @@ public class BulletDamage : MonoBehaviour
     }
     private void Update()
     {
-        Sprite.transform.Rotate(new Vector3(0,0,5));
+        Sprite.transform.Rotate(new Vector3(0,0,2));
     }
 }

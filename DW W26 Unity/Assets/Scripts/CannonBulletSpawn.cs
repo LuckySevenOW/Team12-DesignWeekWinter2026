@@ -11,7 +11,7 @@ public class CannonBulletSpawn : MonoBehaviour
     public GameObject Bullet;
     public SpriteRenderer AmmoIndicator;
     public bool Missile;
-    private float AutoReload = 20f;
+    private float AutoReload = 40f;
     public void Shoot()
     {
         //check for ammo
@@ -45,7 +45,7 @@ public class CannonBulletSpawn : MonoBehaviour
             if (AutoReload <= 0)
             {
                 RemainingShots = 1;
-                AutoReload = 20;
+                AutoReload = 40f;
             }
         }
     }
