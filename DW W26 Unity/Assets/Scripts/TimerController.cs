@@ -17,6 +17,7 @@ public class TimerController : MonoBehaviour
     public GameObject DrawScreenDisplay1;
     public GameObject DrawScreenDisplay2;
 
+
     void Update()
     {
         //This is for the 5 second countdown delay
@@ -33,10 +34,5 @@ public class TimerController : MonoBehaviour
         Countdown1.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
         Countdown2.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
 
-        //Activate the draw screens on both displays
-        if (time <= 0f)
-        {
-            SceneManager.LoadScene(2);
-        }
     }
 }
