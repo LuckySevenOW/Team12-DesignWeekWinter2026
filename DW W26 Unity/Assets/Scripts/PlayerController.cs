@@ -58,12 +58,12 @@ public class PlayerController : MonoBehaviour
         AmmoBoxLayers = LayerMask.GetMask("ammobox");
         if (Rigidbody2D.transform.position.x > 0)
         {
-            SpriteRenderer.sprite = Wizard;
+            SpriteRenderer.sprite = TechGuy;
             AmmoSprite.sprite = MagicAmmo;
         }
         else
         {
-            SpriteRenderer.sprite = TechGuy;
+            SpriteRenderer.sprite = Wizard;
         }
     }
 
