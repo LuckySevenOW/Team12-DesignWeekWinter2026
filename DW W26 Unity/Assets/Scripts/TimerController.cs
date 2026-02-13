@@ -30,7 +30,8 @@ public class TimerController : MonoBehaviour
         time -= Time.deltaTime;
         if (time < 0) time = 0;
 
-
+        Countdown1.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
+        Countdown2.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
         //Activate the draw screens on both displays
         if (time <= 0f)
         {
