@@ -5,7 +5,14 @@ public class BulletDamage : MonoBehaviour
     Rigidbody2D CurrCollider;
     LayerMask destroyablelayers;
     public GameObject itself;
-    int BulDam;
+    public SpriteRenderer Sprite;
+    public Rigidbody2D Explosion;
+    public bool Explodes;
+    public int BulDam;
+    public int ExplosiveDam;
+
+    public int BulletKnockback;
+    public int ExplosiveKnockback;
     [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void setdamage(int damage)
@@ -22,7 +29,9 @@ public class BulletDamage : MonoBehaviour
             if (CurrCollider)
           {
             if (CurrCollider.transform.GetComponent<Destructable>())
-                CurrCollider.transform.GetComponent<Destructable>().Hit(BulDam);
+                {
+                    CurrCollider.transform.GetComponent<Destructable>().Hit(BulDam); 
+                }
             else
             {
                 if (CurrCollider.transform.GetComponent<WinTarget>())
@@ -34,13 +43,16 @@ public class BulletDamage : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("player"))
         {
-            collision.transform.GetComponent<Rigidbody2D>().linearVelocity = itself.transform.position - collision.transform.position;
+            collision.transform.GetComponent<Rigidbody2D>().linearVelocity = (itself.transform.position - collision.transform.position) * BulletKnockback;
         }
-            Destroy(itself, 0.01f);
+        if (Explodes)
+        {
+            Explosion.transform.position = itself.transform.position;
+        }
+        Destroy(itself, 0.02f);
     }
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Sprite.transform.Rotate(new Vector3(0,0,5));
     }
 }

@@ -9,6 +9,11 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     //This stuff is for the info pop up screen, to hide it and show it when the button is clicked
     public GameObject infoScreen;
 
