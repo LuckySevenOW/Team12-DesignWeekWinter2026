@@ -12,7 +12,7 @@ public class TimerController : MonoBehaviour
 
     //This is for the 5 second countdown, its to delay my 5 minute game timer
     public float startDelay = 5f;
-    public  GameObject points;
+
     //This is for the panel gameobjects that will be the draw screens
     public GameObject DrawScreenDisplay1;
     public GameObject DrawScreenDisplay2;
@@ -30,11 +30,13 @@ public class TimerController : MonoBehaviour
         time -= Time.deltaTime;
         if (time < 0) time = 0;
 
+        Countdown1.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
+        Countdown2.text = ((int)time / 60) + ":" + ((int)time % 60).ToString("00");
 
         //Activate the draw screens on both displays
         if (time <= 0f)
         {
-            points.transform.GetComponent<PointsManager>().RoundEnd();
+            SceneManager.LoadScene(2);
         }
     }
 }
